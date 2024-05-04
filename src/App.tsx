@@ -85,7 +85,7 @@ function TitleCard() {
   const [isAnimating, setIsAnimating] = useState(true);
 
   return (
-    <div className="w-full p-10 rounded-lg dark:text-slate-100 bg-slate-300 dark:bg-slate-800/50 relative text-slate-800">
+    <div className="w-full px-8 py-10 rounded-lg dark:text-slate-100 bg-slate-300 dark:bg-slate-800/50 relative text-slate-800">
       <button
         onClick={() => {
           setIsAnimating(!isAnimating);
@@ -96,7 +96,7 @@ function TitleCard() {
         }
       </button>
       <h1 className='text-5xl font-bold'>Bienvenido a mi blog</h1>
-      <p className='text-2xl' >Profe Braulio <span className='font-bold' ><AnimatedWord shouldRenderAnimation={isAnimating} /></span></p>
+      <p className='text-lg h-[3.50rem]' >Profe Braulio <span className='font-bold' ><AnimatedWord shouldRenderAnimation={isAnimating} /></span></p>
     </div>
   )
 }
@@ -121,7 +121,7 @@ function CardProject({ title, date, description, label, github }: Project) {
         <IconCalendar size={14} /> <span>Published {Intl.DateTimeFormat('en-US', {
           dateStyle: 'full',
         }).format(date)}</span>
-        <span>{relativeDate.format(-monthsDiff, 'month')}</span>
+        <span className='hidden sm:block'>{relativeDate.format(-monthsDiff, 'month')}</span>
       </p>
       <div className='flex justify-between'>
         {label}
@@ -188,7 +188,7 @@ function App() {
         <div className="grow h-full text-sm bg-gradient-to-r dark:bg-gradient-to-l from-slate-300 to-slate-600 dark:from-slate-500 dark:to-slate-800"></div>
         <div className="min-w-[300px] w-full max-w-[800px] dark:bg-slate-700 bg-slate-200 overflow-y-scroll pb-5">
           <Navbar />
-          <div className="px-12 flex flex-col gap-5">
+          <div className="px-5 md:px-12 flex flex-col gap-5">
             <TitleCard />
             {
               projects.map(({ title, description, date, label, github }, index) => (
