@@ -1,0 +1,353 @@
+{
+  "HRS-backend": {
+    "title": "HRS - Backend",
+    "date": "2023-05-07",
+    "tags": [
+      "backend",
+      "node.js",
+      "express",
+      "mongodb",
+      "rest-api",
+      "authentication"
+    ],
+    "content": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Descripción del proyecto backend"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El backend de este proyecto es una aplicación construida con Node.js y Express.js que proporciona una API RESTful para un sistema de reservación de hoteles. Utiliza MongoDB como base de datos a través de Mongoose, un objeto de modelado de datos (ODM) que facilita las interacciones con la base de datos."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "La aplicación sigue una arquitectura modular, donde los diferentes componentes están organizados en carpetas separadas, como "
+          },
+          {
+            "type": "code",
+            "text": "controllers"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "models"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "routes"
+          },
+          {
+            "type": "text",
+            "value": " y "
+          },
+          {
+            "type": "code",
+            "text": "middleware"
+          },
+          {
+            "type": "text",
+            "value": ". Los controladores manejan la lógica de negocio, los modelos interactúan con la base de datos MongoDB, las rutas definen los endpoints de la API, y los middlewares se utilizan para tareas transversales, como la autenticación y la validación de datos."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "La autenticación y autorización se implementan mediante JSON Web Tokens (JWT) y la biblioteca "
+          },
+          {
+            "type": "code",
+            "text": "bcryptjs"
+          },
+          {
+            "type": "text",
+            "value": " para el cifrado de contraseñas, permitiendo a los usuarios registrarse, iniciar sesión y acceder a funcionalidades específicas según sus roles (cliente, administrador de hotel o administrador de la plataforma). Además, se incluye middleware para validar las solicitudes entrantes y proteger determinadas rutas."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El proyecto también cuenta con características adicionales, como la gestión de imágenes de hoteles y habitaciones, la capacidad de marcar hoteles como favoritos, y la generación de facturas simuladas para las reservaciones."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El proyecto utiliza dependencias como "
+          },
+          {
+            "type": "code",
+            "text": "express"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "express-validator"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "morgan"
+          },
+          {
+            "type": "text",
+            "value": " (para el registro de solicitudes HTTP), "
+          },
+          {
+            "type": "code",
+            "text": "cors"
+          },
+          {
+            "type": "text",
+            "value": " (para el manejo de solicitudes de origen cruzado), y "
+          },
+          {
+            "type": "code",
+            "text": "dotenv"
+          },
+          {
+            "type": "text",
+            "value": " (para la gestión de variables de entorno)."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "Además, se ha implementado un flujo de trabajo de integración continua (CI) utilizando GitHub Actions, lo que garantiza que el código se pruebe y se compile correctamente con cada nuevo commit o pull request. El backend se despliega en Heroku, una plataforma de hosting en la nube."
+          }
+        ]
+      }
+    ]
+  },
+  "HRS-frontend": {
+    "title": "HRS - Frontend",
+    "date": "2023-05-07",
+    "tags": [
+      "frontend",
+      "react",
+      "vite",
+      "tailwind-css",
+      "react-router",
+      "context-api"
+    ],
+    "content": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Descripción del proyecto frontend"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El frontend de este proyecto es una aplicación web desarrollada con React.js y Vite, que proporciona una interfaz de usuario intuitiva y atractiva para interactuar con el backend de reservación de hoteles."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "La aplicación sigue una arquitectura basada en componentes, donde cada componente React representa una parte específica de la interfaz de usuario. Los componentes están organizados en carpetas separadas, como "
+          },
+          {
+            "type": "code",
+            "text": "components"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "pages"
+          },
+          {
+            "type": "text",
+            "value": " y "
+          },
+          {
+            "type": "code",
+            "text": "route-guards"
+          },
+          {
+            "type": "text",
+            "value": "."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El estado de la aplicación se maneja utilizando el contexto de React y la biblioteca "
+          },
+          {
+            "type": "code",
+            "text": "react-router-dom"
+          },
+          {
+            "type": "text",
+            "value": " para el enrutamiento de la aplicación."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "La aplicación cuenta con varias páginas principales, como la página de inicio, donde los usuarios pueden buscar y filtrar hoteles disponibles; la página de detalles del hotel, donde se muestra información detallada sobre un hotel específico y se pueden ver las habitaciones disponibles; y las páginas de inicio de sesión y registro de usuarios."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "Además, se han implementado funcionalidades adicionales, como la visualización de imágenes de hoteles y habitaciones, la capacidad de marcar hoteles como favoritos, y la generación de facturas simuladas para las reservaciones."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "La interfaz de usuario se ha diseñado utilizando Tailwind CSS, un framework de CSS utilitario que facilita la creación de estilos personalizados y responsivos. También se utilizan iconos de la biblioteca "
+          },
+          {
+            "type": "code",
+            "text": "@fortawesome/react-fontawesome"
+          },
+          {
+            "type": "text",
+            "value": "."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El proyecto frontend se despliega de manera automática en Heroku, una plataforma de hosting en la nube, y se integra con el backend a través de solicitudes HTTP a la API RESTful."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "El proyecto utiliza dependencias como "
+          },
+          {
+            "type": "code",
+            "text": "react"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "react-dom"
+          },
+          {
+            "type": "text",
+            "value": ", "
+          },
+          {
+            "type": "code",
+            "text": "@vitejs/plugin-react-swc"
+          },
+          {
+            "type": "text",
+            "value": " (un complemento de Vite para React), "
+          },
+          {
+            "type": "code",
+            "text": "autoprefixer"
+          },
+          {
+            "type": "text",
+            "value": " y "
+          },
+          {
+            "type": "code",
+            "text": "postcss"
+          },
+          {
+            "type": "text",
+            "value": " (herramientas de procesamiento de CSS), y "
+          },
+          {
+            "type": "code",
+            "text": "express"
+          },
+          {
+            "type": "text",
+            "value": " (para el servidor de desarrollo)."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "value": "En resumen, el frontend de este proyecto proporciona una experiencia de usuario atractiva y funcional, permitiendo a los usuarios buscar, reservar y administrar sus reservaciones de hoteles de manera intuitiva y sin problemas."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "link",
+            "text": "Ver proyecto frontend",
+            "url": "https://hrs-frontend.herokuapp.com/"
+          }
+        ]
+      }
+    ]
+  }
+}
