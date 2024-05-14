@@ -3,58 +3,7 @@ import Navbar from "../components/Navbar.tsx";
 import { useEffect, useRef, useState } from "react";
 import CommentCardContainer from "../components/CommentCardContainer.tsx";
 import Form from "../components/Form.tsx";
-
-// Inline Element Types
-interface TextElement {
-  type: "text";
-  value: string;
-}
-
-interface LinkElement {
-  type: "link";
-  text: string;
-  url: string;
-}
-
-interface StrongElement {
-  type: "strong";
-  text: string;
-}
-
-interface CodeElement {
-  type: "code";
-  text: string;
-}
-
-type InlineElement = TextElement | LinkElement | StrongElement | CodeElement;
-
-// Block Element Types
-interface HeadingElement {
-  type: "heading";
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-  text: string;
-}
-
-interface ParagraphElement {
-  type: "paragraph";
-  content: InlineElement[];
-}
-
-interface CodeBlockElement {
-  type: "codeBlock";
-  language: string;
-  code: string;
-}
-
-type BlockElement = HeadingElement | ParagraphElement | CodeBlockElement;
-
-// Blog Post
-interface BlogPost {
-  title: string;
-  date: string;
-  tags: string[];
-  content: BlockElement[];
-}
+import { BlogPost } from "../types";
 export default function Post() {
   const { postName } = useParams();
   const { posts } = useLoaderData() as { posts: Record<string, BlogPost> };
@@ -125,6 +74,7 @@ export default function Post() {
                     if (inlineElement.type === "link") {
                       return (
                         <a
+                          key={i}
                           className="font-semibold text-rose-700 dark:text-rose-300 hover:underline cursor-pointer"
                           href={inlineElement.url}
                           target="_blank"
@@ -135,14 +85,17 @@ export default function Post() {
                     }
                     if (inlineElement.type === "strong") {
                       return (
-                        <strong className="font-bold">
+                        <strong key={i} className="font-bold">
                           {inlineElement.text}
                         </strong>
                       );
                     }
                     if (inlineElement.type === "code") {
                       return (
-                        <span className="bg-neutral-100 text-xl px-2 rounded text-purple-700 dark:bg-slate-800 dark:text-purple-400">
+                        <span
+                          key={i}
+                          className="bg-neutral-100 text-xl px-2 rounded text-purple-700 dark:bg-slate-800 dark:text-purple-400"
+                        >
                           {inlineElement.text}
                         </span>
                       );
@@ -158,14 +111,14 @@ export default function Post() {
       </div>
       <div className="px-20 flex flex-col gap-7 text-start">
         <div>
-          <h3 className="font-bold pb-7 dark:text-white">1 comment</h3>
           <CommentCardContainer
             shouldUpdate={shouldUpdate}
             setShouldUpdate={setShouldUpdate}
+            postName={postName!}
           />
         </div>
         <Form
-          publication="HRS-frontend"
+          publication={postName!}
           onSubmit={() => {
             setShouldUpdate(true);
           }}

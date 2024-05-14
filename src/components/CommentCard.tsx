@@ -13,7 +13,6 @@ const CommentCard = ({
   username,
   createdAt,
   content,
-  parent,
   publication,
   onFormSubmit,
   _id,
@@ -60,31 +59,36 @@ const CommentCard = ({
           <span>{comments.length} replies</span>
         </div>
       </div>
-      <div className="py-2 px-5 border border-neutral-400/50 bg-[#f6f8fa] dark:bg-[#1c2128] rounded-t border-b-0 flex flex-col gap-3">
-        {comments.map((comment: Comment) => {
-          return (
-            <div className="grid grid-cols-[35px,1fr] gap-x-3 gap-y-1 justify-center dark:text-[#768390]">
-              <div className="rounded-full bg-red-500 size-[35px]"></div>
-              <div className="flex gap-3 text-sm items-center">
-                <span className="font-bold dark:text-neutral-100">
-                  {comment.username}
-                </span>
-                <span>
-                  {Intl.DateTimeFormat("en-US", {
-                    dateStyle: "full",
-                  }).format(new Date(comment.createdAt))}
-                </span>
+      {comments.length > 0 && (
+        <div className="py-2 px-5 border border-neutral-400/50 bg-[#f6f8fa] dark:bg-[#1c2128] rounded-t border-b-0 flex flex-col gap-3">
+          {comments.map((comment: Comment) => {
+            return (
+              <div
+                key={comment._id}
+                className="grid grid-cols-[35px,1fr] gap-x-3 gap-y-1 justify-center dark:text-[#768390]"
+              >
+                <div className="rounded-full bg-red-500 size-[35px]"></div>
+                <div className="flex gap-3 text-sm items-center">
+                  <span className="font-bold dark:text-neutral-100">
+                    {comment.username}
+                  </span>
+                  <span>
+                    {Intl.DateTimeFormat("en-US", {
+                      dateStyle: "full",
+                    }).format(new Date(comment.createdAt))}
+                  </span>
+                </div>
+                <div className="flex justify-center">
+                  <div className="w-[2px] bg-neutral-500 pt-7 pb-2"></div>
+                </div>
+                <div className="text-black self-end dark:text-neutral-300">
+                  {comment.content}
+                </div>
               </div>
-              <div className="flex justify-center">
-                <div className="w-[2px] bg-neutral-500 pt-7 pb-2"></div>
-              </div>
-              <div className="text-black self-end dark:text-neutral-300">
-                {comment.content}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
       {!formVisible && (
         <div className="px-5 py-3 dark:bg-[#2d333b] bg-[#f6f8fa] border border-neutral-400/50">
           <input
@@ -104,7 +108,6 @@ const CommentCard = ({
           ref={formRef}
           showCancel
           onSubmit={(form) => {
-            console.log(form, parent);
             fetch(`${API_URL}/comments/${postName}/${_id}`)
               .then((res) => res.json())
               .then(({ data }) => {

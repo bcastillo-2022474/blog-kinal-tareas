@@ -6,12 +6,13 @@ import { API_URL } from "../config.ts";
 function CommentCardContainer({
   shouldUpdate,
   setShouldUpdate,
+  postName,
 }: {
   shouldUpdate: boolean;
   setShouldUpdate: (value: boolean) => void;
+  postName: string;
 }) {
   const [comments, setComments] = useState<Comment[]>([]);
-  const postName = "HRS-frontend";
 
   useEffect(() => {
     if (!shouldUpdate) return;
@@ -31,25 +32,30 @@ function CommentCardContainer({
   }, [shouldUpdate]);
 
   return (
-    <div className="flex flex-col gap-2">
-      {comments.map((comment: Comment) => {
-        return (
-          <CommentCard
-            key={comment._id}
-            username={comment.username}
-            createdAt={comment.createdAt}
-            content={comment.content}
-            publication={comment.publication}
-            parent={comment.parent}
-            _id={comment._id}
-            onFormSubmit={() => {
-              setShouldUpdate(true);
-            }}
-            postName={postName}
-          />
-        );
-      })}
-    </div>
+    <>
+      <h3 className="font-bold pb-7 dark:text-white">
+        {comments.length} comments
+      </h3>
+      <div className="flex flex-col gap-2">
+        {comments.map((comment: Comment) => {
+          return (
+            <CommentCard
+              key={comment._id}
+              username={comment.username}
+              createdAt={comment.createdAt}
+              content={comment.content}
+              publication={comment.publication}
+              parent={comment.parent}
+              _id={comment._id}
+              onFormSubmit={() => {
+                setShouldUpdate(true);
+              }}
+              postName={postName}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
 

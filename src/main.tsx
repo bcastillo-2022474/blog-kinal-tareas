@@ -8,7 +8,6 @@ import Post from "./pages/Post.tsx";
 const loadPosts = async () => {
   // load json file in public folder
   const response = await fetch("/posts.json");
-  console.log(response);
   const posts = await response.json();
   return { posts };
 };
@@ -32,6 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: loadPosts,
         element: <App />,
       },
       {

@@ -1,7 +1,11 @@
 {
   "HRS-backend": {
     "title": "HRS - Backend",
-    "date": "2023-05-07",
+    "large_title": "Hotel Reservation System Backend",
+    "date": "2024-03-02T06:00:00.000Z",
+    "github": "https://github.com/kinal-team-1/hotel-reservation-system-backend",
+    "url": "https://backend-hotel-reservation-sys-d9bcaec0a6ce.herokuapp.com/",
+    "description": "API RESTful construida con Node.js, Express.js y MongoDB para un sistema de reservación de hoteles. Maneja la lógica de negocio, autenticación con JWT, autorización por roles y se despliega en Heroku",
     "tags": [
       "backend",
       "node.js",
@@ -154,7 +158,11 @@
   },
   "HRS-frontend": {
     "title": "HRS - Frontend",
-    "date": "2023-05-07",
+    "large_title": "Hotel Reservation System Frontend",
+    "date": "2024-03-19T06:00:00.000Z",
+    "github": "https://github.com/kinal-team-1/hotel-reservation-system-frontend",
+    "url": "https://demo-hotel-reservation-system-e09f6d9fe848.herokuapp.com/",
+    "description": "aplicación web de React.js y Vite para reservar hoteles. Proporciona una interfaz de usuario atractiva con Tailwind CSS. Se integra con el backend mediante solicitudes HTTP y se despliega en Heroku.",
     "tags": [
       "frontend",
       "react",
