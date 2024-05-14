@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <App />,
       },
       {
-        path: "/HRS-frontend",
+        path: "/:postName",
         loader: loadPosts,
         element: <Post />,
       },

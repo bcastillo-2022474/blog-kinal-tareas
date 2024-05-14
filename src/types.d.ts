@@ -11,7 +11,10 @@ export type Project = {
 };
 
 export type Comment = {
-  date: string;
+  createdAt: string;
   username: string;
   content: string;
+  publication: string;
+  parent?: string;
+  _id: string;
 };
