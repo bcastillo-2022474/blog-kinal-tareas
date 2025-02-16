@@ -114,8 +114,8 @@ const CommentCard = ({
                 setComments(data);
                 formRef.current?.focus();
               })
-              .catch((err) => console.error(err));
-            onFormSubmit(form);
+              .catch((err) => console.error(err))
+              .finally(() => onFormSubmit(form));
           }}
           onCancel={() => {
             setFormVisible(false);

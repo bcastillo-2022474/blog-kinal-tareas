@@ -1,22 +1,26 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar.tsx";
 import { useEffect, useRef, useState } from "react";
+import { API_URL } from "../config.ts";
+import { Comment } from "../types";
 import CommentCardContainer from "../components/CommentCardContainer.tsx";
 import Form from "../components/Form.tsx";
 import { BlogPost } from "../types";
 export default function Post() {
   const { postName } = useParams();
   const { posts } = useLoaderData() as { posts: Record<string, BlogPost> };
-  const [shouldUpdate, setShouldUpdate] = useState(true);
-
-  useEffect(() => {
-    if (!shouldUpdate) return;
-
-    setShouldUpdate(false);
-  }, [shouldUpdate]);
-
+  const [comments, setComments] = useState<Comment[]>([]);
   const ref = useRef<HTMLDivElement>(null);
   const post = posts[postName!];
+
+  useEffect(() => {
+    fetch(`${API_URL}/comments/${postName}/`)
+      .then((res) => res.json())
+      .then(({ data }) => {
+        setComments(data);
+      })
+      .catch((err) => console.error(err));
+  }, [])
 
   return (
     <>
@@ -112,15 +116,29 @@ export default function Post() {
       <div className="px-20 flex flex-col gap-7 text-start">
         <div>
           <CommentCardContainer
-            shouldUpdate={shouldUpdate}
-            setShouldUpdate={setShouldUpdate}
+            onSubmit={() => {
+              fetch(`${API_URL}/comments/${postName}/`)
+                .then((res) => res.json())
+                .then(({ data }) => {
+                  setComments(data);
+                })
+                .catch((err) => console.error(err));
+            }}
             postName={postName!}
+            comments={comments}
           />
         </div>
         <Form
           publication={postName!}
           onSubmit={() => {
-            setShouldUpdate(true);
+            fetch(`${API_URL}/comments/${postName}/`)
+              .then((res) => res.json())
+              .then(({ data }) => {
+                console.log("JEJE")
+                console.log({data})
+                setComments(data);
+              })
+              .catch((err) => console.error(err));
           }}
         />
       </div>

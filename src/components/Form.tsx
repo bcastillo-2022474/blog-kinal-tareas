@@ -8,13 +8,13 @@ const Form = forwardRef(function Form(
     showCancel,
     publication,
     parent,
-    onSubmit,
+    onSubmit
   }: {
     publication: string;
-    onSubmit: (form: Omit<Comment, "createdAt" | "_id">) => void;
     parent?: string;
     onCancel?: () => void;
     showCancel?: boolean;
+    onSubmit: (form: Omit<Comment, "createdAt" | "_id">) => void;
   },
   ref?: ForwardedRef<HTMLInputElement>,
 ) {
@@ -24,7 +24,7 @@ const Form = forwardRef(function Form(
   });
 
   async function postComment(form: Omit<Comment, "createdAt" | "_id">) {
-    fetch(`${API_URL}/comments`, {
+    return fetch(`${API_URL}/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,12 +40,12 @@ const Form = forwardRef(function Form(
       onSubmit={(e) => {
         e.preventDefault();
         postComment({ ...form, publication, parent }).then(() => {
-          onSubmit({ ...form, publication, parent });
           setForm({
             username: "",
             content: "",
           });
-        });
+        })
+        .finally(() => onSubmit({ ...form, publication, parent }))
       }}
       className="flex flex-col rounded"
     >

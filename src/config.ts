@@ -1,1 +1,1 @@
-export const API_URL = "https://blog-kinal-backend-dffef965b15f.herokuapp.com";
+export const API_URL = import.meta.env.VITE_API_URL

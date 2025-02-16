@@ -1,36 +1,15 @@
-import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard.tsx";
 import { Comment } from "../types";
-import { API_URL } from "../config.ts";
 
 function CommentCardContainer({
-  shouldUpdate,
-  setShouldUpdate,
+  onSubmit,
   postName,
+  comments,
 }: {
-  shouldUpdate: boolean;
-  setShouldUpdate: (value: boolean) => void;
+  onSubmit: () => void
   postName: string;
+  comments: Comment[]
 }) {
-  const [comments, setComments] = useState<Comment[]>([]);
-
-  useEffect(() => {
-    if (!shouldUpdate) return;
-
-    setShouldUpdate(false);
-  }, [shouldUpdate]);
-
-  useEffect(() => {
-    if (!shouldUpdate) return;
-
-    fetch(`${API_URL}/comments/${postName}/`)
-      .then((res) => res.json())
-      .then(({ data }) => {
-        setComments(data);
-      })
-      .catch((err) => console.error(err));
-  }, [shouldUpdate]);
-
   return (
     <>
       <h3 className="font-bold pb-7 dark:text-white">
@@ -47,9 +26,7 @@ function CommentCardContainer({
               publication={comment.publication}
               parent={comment.parent}
               _id={comment._id}
-              onFormSubmit={() => {
-                setShouldUpdate(true);
-              }}
+              onFormSubmit={onSubmit}
               postName={postName}
             />
           );
