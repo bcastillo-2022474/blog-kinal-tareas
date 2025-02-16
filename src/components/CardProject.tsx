@@ -54,10 +54,10 @@ function CardProject({
           })}
         </div>
         <div className="flex gap-2">
-          <a href={url}>
+          <a onClick={(e) => e.stopPropagation()} href={url} className="z-[100]">
             <IconUnlink size={24} />
           </a>
-          <a href={github}>
+          <a onClick={(e) => e.stopPropagation()} href={github} className="z-[100]">
             <IconBrandGithub size={24} />
           </a>
         </div>
